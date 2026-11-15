@@ -1,148 +1,267 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JP's Tech-Solutions - Office & Windows</title>
-<style>
-body { background:#000; color:#fff; font-family: Arial, sans-serif; margin:0; padding:15px; text-align:center; }
-.welcome { font-size:30px; font-weight:bold; margin:15px 0 5px; line-height:1.2; color:#fff; }
-.welcome span { color:#fff; }
-.logo { color:#fff; font-weight:bold; letter-spacing:2px; font-size:14px; margin-bottom:5px; }
-.sub { color:#fff; font-size:14px; margin-bottom:18px; line-height:1.6; }
-.tabs { display:flex; gap:10px; margin:10px 0; }
-.tab { flex:1; border:2px solid #8ED081; border-radius:16px; padding:14px 5px; cursor:pointer; background:#0a0a0a; font-weight:bold; font-size:17px; color:#fff; }
-.tab.active { border-color:#8ED081; box-shadow:0 0 14px #8ED081; background:#12210f; color:#fff; }
-.tab small { display:block; font-weight:normal; color:#ddd; font-size:12px; margin-top:4px; }
-.icons { display:flex; gap:8px; margin:10px 0; align-items:center; flex-wrap:wrap; }
-.icon-new { position:relative; width:48px; height:48px; border-radius:14px; overflow:hidden; box-shadow:0 6px 14px rgba(0,0,0,0.5), inset 0 2px 3px rgba(255,255,255,0.5); flex-shrink:0; }
-.icon-new::before { content:""; position:absolute; top:0; left:0; right:0; height:55%; border-radius:14px 14px 6px 6px; background:rgba(255,255,255,0.25); }
-.icon-new .badge { position:absolute; left:3px; bottom:3px; width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:15px; color:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.4); z-index:2; }
-.icon-new .fold { position:absolute; top:6px; right:6px; width:16px; height:16px; border-radius:4px; background:rgba(255,255,255,0.35); z-index:1; }
-.o-icon { background:linear-gradient(135deg,#FFB900,#FF8A00 60%,#E67E00); } .o-icon .badge{ background:#FF8A00; }
-.w-icon { background:linear-gradient(135deg,#A78BFA,#2B7CD3 50%,#185ABD); } .w-icon .badge{ background:#1E5BBF; }
-.x-icon { background:linear-gradient(135deg,#7ED957,#21A366 55%,#0F7A4A); } .x-icon .badge{ background:#0F7A4A; }
-.p-icon { background:linear-gradient(135deg,#FF9A5A,#E65A1F 55%,#C43E1F); } .p-icon .badge{ background:#C43E1F; }
-.n-icon { background:linear-gradient(135deg,#D8A6FF,#8B5CF6 55%,#6D28D9); } .n-icon .badge{ background:#6D28D9; }
-.cloud { font-size:26px; }
-.box { border:2px solid #8ED081; box-shadow:0 0 14px #8ED081; border-radius:20px; padding:18px; margin:18px 0; text-align:left; background:#050505; }
-.gold { color:#fff; text-align:center; }
-.gold-title { color:#fff; text-align:center; }
-.product { border:2px solid #555; border-radius:16px; padding:15px; margin:12px 0; cursor:pointer; background:#0a0a0a; }
-.product.selected { border-color:#8ED081; box-shadow:0 0 14px #8ED081; background:#12210f; }
-.product h3 { margin:0 0 5px; color:#fff; font-size:19px; }
-.price { color:#fff; font-size:24px; font-weight:bold; }
-.desc { color:#ddd; font-size:14px; margin:6px 0; }
-.tag { background:#8ED081; color:#fff; font-size:12px; font-weight:bold; padding:3px 8px; border-radius:10px; }
-.yellow-btn { background:#8ED081; color:#fff; padding:18px; border-radius:15px; font-weight:bold; font-size:20px; display:block; text-decoration:none; text-align:center; margin-top:15px; }
-.green-btn { background:#8ED081; color:#fff; padding:18px; border-radius:15px; font-weight:bold; font-size:22px; display:block; text-decoration:none; text-align:center; }
-.check { color:#8ED081; }
-.small { color:#ddd; font-size:14px; margin-top:15px; }
-.footer { color:#ddd; font-size:13px; margin-top:25px; line-height:1.6; }
-.hidden { display:none !important; }
-.wa-num { font-size:13px; opacity:0.9; font-weight:normal; display:block; margin-top:4px; color:#fff; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP -Pilot | Black & Gold Edition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            metallic: '#d4af37'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel Standalone for JSX -->
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+    </style>
 </head>
-<body>
+<body class="bg-black text-white antialiased h-screen overflow-hidden flex flex-col">
 
-<div class="welcome">Welcome to<br><span>JP's Tech-Solutions</span></div>
-<div class="logo">IIT TEC SOLUTIONS</div>
-<div class="sub">Cape Town Based • Fast Reply • 100% Secure<br>📍 Strand, Cape Town</div>
+    <div id="root" class="h-full w-full flex"></div>
 
-<div class="tabs">
-<button type="button" id="tabOffice" class="tab active">📄 OFFICE<div class="icons" style="justify-content:center;"><div class="icon-new o-icon"><div class="fold"></div><div class="badge">O</div></div><div class="icon-new w-icon"><div class="fold"></div><div class="badge">W</div></div><div class="icon-new x-icon"><div class="fold"></div><div class="badge">X</div></div><div class="icon-new p-icon"><div class="fold"></div><div class="badge">P</div></div><div class="icon-new n-icon"><div class="fold"></div><div class="badge">N</div></div></div><small>Tap to view Office</small></button>
-<button type="button" id="tabWindows" class="tab">🪟 WINDOWS<div style="font-size:20px;">🪟 Win 11 • Win 10</div><small>Tap to view Windows</small></button>
-</div>
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
 
-<div class="box" id="cat-office">
-<h2 class="gold-title">📄 Office Products</h2>
-<p style="text-align:center; color:#ddd; font-size:14px;">Tap one to select it</p>
+        const PERSONAS = [
+            { id: 'general', name: 'General Assistant', icon: '🤖', desc: 'Versatile problem solver for research, planning, & tasks.' },
+            { id: 'writing', name: 'Writing & Docs', icon: '✍️', desc: 'Crafts professional emails, essays, and marketing copy.' },
+            { id: 'code', name: 'Code & Dev', icon: '💻', desc: 'Expert programmer for debugging, architecture, & scripts.' },
+            { id: 'data', name: 'Data & Strategy', icon: '📊', desc: 'Analyzes metrics, builds business frameworks, & models.' },
+            { id: 'image', name: 'Image Creator', icon: '🎨', desc: 'Generates stunning photorealistic & artistic visuals.' },
+            { id: 'teams', name: 'Teams Meeting Copilot', icon: '📞', desc: 'Auto-records, transcribes, & extracts action items from meetings.' }
+        ];
 
-<div class="product selected" onclick="selectProduct(this,'Microsoft Office 2021','R200')">
-<h3>📄 Microsoft Office 2021 <span class="tag">BEST VALUE</span></h3>
-<div class="icons"><div class="icon-new o-icon"><div class="fold"></div><div class="badge">O</div></div><div class="icon-new w-icon"><div class="fold"></div><div class="badge">W</div></div><div class="icon-new x-icon"><div class="fold"></div><div class="badge">X</div></div><div class="icon-new p-icon"><div class="fold"></div><div class="badge">P</div></div><div class="icon-new n-icon"><div class="fold"></div><div class="badge">N</div></div></div>
-<div class="price">R200</div>
-<div class="desc">Word, Excel, PowerPoint, Outlook, OneNote • Lifetime • For Windows</div>
-<div style="font-size:13px;">✓ Instant Delivery on WhatsApp</div>
-</div>
+        const ASPECT_RATIOS = [
+            { id: '1:1', label: 'Square (1:1)', w: 1024, h: 1024 },
+            { id: '16:9', label: 'Landscape (16:9)', w: 1280, h: 720 },
+            { id: '9:16', label: 'Portrait (9:16)', w: 720, h: 1280 },
+            { id: '4:3', label: 'Standard (4:3)', w: 1024, h: 768 }
+        ];
 
-<div class="product" onclick="selectProduct(this,'Microsoft Office 2024','R500')">
-<h3>📄 Microsoft Office 2024 <span class="tag">NEW</span></h3>
-<div class="icons"><div class="icon-new o-icon"><div class="fold"></div><div class="badge">O</div></div><div class="icon-new w-icon"><div class="fold"></div><div class="badge">W</div></div><div class="icon-new x-icon"><div class="fold"></div><div class="badge">X</div></div><div class="icon-new p-icon"><div class="fold"></div><div class="badge">P</div></div><div class="icon-new n-icon"><div class="fold"></div><div class="badge">N</div></div></div>
-<div class="price">R500</div>
-<div class="desc">Latest Version • Word, Excel, PowerPoint, Outlook, OneNote • Lifetime</div>
-<div style="font-size:13px;">✓ Instant Delivery on WhatsApp</div>
-</div>
+        const STYLES = [
+            { id: 'photorealistic', name: 'Photorealistic', suffix: 'highly detailed 8k photography, realistic lighting, professional DSLR' },
+            { id: 'cinematic', name: 'Cinematic Studio', suffix: 'cinematic lighting, dramatic shadows, movie still, volumetric fog' },
+            { id: 'architectural', name: 'Architectural', suffix: 'architectural render, clean lines, interior design, natural light' },
+            { id: 'product', name: 'Product Shot', suffix: 'commercial studio lighting, minimalist background, product photography' },
+            { id: 'digital', name: 'Digital Art', suffix: 'concept art, vibrant colors, trending on artstation, masterpiece' }
+        ];
 
-<div class="product" onclick="selectProduct(this,'Microsoft Office 365','R500')">
-<h3>☁️ Microsoft Office 365</h3>
-<div class="icons"><div class="icon-new o-icon"><div class="fold"></div><div class="badge">O</div></div><div class="icon-new w-icon"><div class="fold"></div><div class="badge">W</div></div><div class="icon-new x-icon"><div class="fold"></div><div class="badge">X</div></div><div class="icon-new p-icon"><div class="fold"></div><div class="badge">P</div></div><div class="icon-new n-icon"><div class="fold"></div><div class="badge">N</div></div><span class="cloud">☁️</span></div>
-<div class="price">R500</div>
-<div class="desc">Word, Excel, PowerPoint, Outlook, OneNote + Cloud</div>
-<div style="font-size:13px;">✓ Works on PC, Phone & Tablet</div>
-</div>
-</div>
+        function App() {
+            const [sessions, setSessions] = useState(() => {
+                const saved = localStorage.getItem('jp_pilot_gold_sessions_v3');
+                return saved ? JSON.parse(saved) : [
+                    { id: '1', title: 'Welcome to JP -Pilot', persona: 'general', messages: [
+                        { role: 'assistant', content: 'Welcome to **JP -Pilot** (Black & Gold Edition). Equipped with Read, Write, Email, Image Generation, and Teams Meeting Copilot tools. How may I assist you today?' }
+                    ], createdAt: Date.now() }
+                ];
+            });
 
-<div class="box hidden" id="cat-windows">
-<h2 class="gold-title">🪟 Windows Products</h2>
-<p style="text-align:center; color:#ddd; font-size:14px;">Tap one to select it</p>
-<div class="product" onclick="selectProduct(this,'Windows 11 Pro','R400')">
-<h3>🪟 Windows 11 Pro</h3>
-<div class="price">R400</div>
-<div class="desc">Official Key • Lifetime Activation • 64-bit</div>
-<div style="font-size:13px;">✓ Works on new PCs & laptops</div>
-</div>
-<div class="product" onclick="selectProduct(this,'Windows 10 Pro','R350')">
-<h3>🪟 Windows 10 Pro</h3>
-<div class="price">R350</div>
-<div class="desc">Official Key • Lifetime Activation • 64-bit</div>
-<div style="font-size:13px;">✓ Best for older PCs</div>
-</div>
-</div>
+            const [activeSessionId, setActiveSessionId] = useState(() => sessions[0]?.id || '1');
+            const [input, setInput] = useState('');
+            const [loading, setLoading] = useState(false);
+            const [searchQuery, setSearchQuery] = useState('');
+            
+            // Image Studio Settings
+            const [isImageMode, setIsImageMode] = useState(false);
+            const [aspectRatio, setAspectRatio] = useState('1:1');
+            const [selectedStyle, setSelectedStyle] = useState('photorealistic');
+            const [magicEnhance, setMagicEnhance] = useState(true);
 
-<div class="box">
-<a id="orderBtn" class="yellow-btn" href="https://wa.me/27766187703?text=Hi%20JP%27s%20Tech-Solutions%2C%20I%20want%20to%20order%20Microsoft%20Office%202021%20-%20R200">💬 Order Microsoft Office 2021 - R200<span class="wa-num">WhatsApp: 076 618 7703</span></a>
-</div>
+            // Teams Recorder State
+            const [isTeamsRecording, setIsTeamsRecording] = useState(false);
+            const [teamsMeetingUrl, setTeamsMeetingUrl] = useState('');
+            const [recordingDuration, setRecordingDuration] = useState(0);
 
-<div class="box">
-<h2 class="gold">How It Works - 2 Easy Steps</h2>
-<p><b>1. Order & Pay:</b> Choose your product above and tap Order on WhatsApp. Pay via EFT / FNB. We send you payment details on WhatsApp.</p>
-<p><b>2. Install & Activate:</b> Items can be installed via AnyDesk and activated for you. We do it all for you remotely.</p>
-<p><span class="check">✓</span> Priority WhatsApp Support - 076 618 7703</p>
-</div>
+            // Canvas Studio State
+            const [canvasOpen, setCanvasOpen] = useState(false);
+            const [canvasContent, setCanvasContent] = useState('');
+            const [canvasTitle, setCanvasTitle] = useState('');
 
-<a class="green-btn" href="https://wa.me/27766187703">💬 Chat on WhatsApp Now<span class="wa-num">076 618 7703 - Tap to Chat</span></a>
-<p class="small">100% Secure • Fast Reply • Strand, Cape Town</p>
-<p class="footer">© 2026 JP's Tech-Solutions | Strand, Cape Town, South Africa<br>WhatsApp: 076 618 7703<br>https://wa.me/27766187703</p>
+            // Lightbox Modal State
+            const [lightboxImg, setLightboxImg] = useState(null);
 
-<script>
-function showCat(cat) {
-  var officeBox = document.getElementById('cat-office');
-  var windowsBox = document.getElementById('cat-windows');
-  var tabO = document.getElementById('tabOffice');
-  var tabW = document.getElementById('tabWindows');
-  if (cat === 'office') {
-    officeBox.classList.remove('hidden');
-    windowsBox.classList.add('hidden');
-    tabO.classList.add('active');
-    tabW.classList.remove('active');
-  } else {
-    officeBox.classList.add('hidden');
-    windowsBox.classList.remove('hidden');
-    tabO.classList.remove('active');
-    tabW.classList.add('active');
-  }
-}
-document.getElementById('tabOffice').addEventListener('click', function(){ showCat('office'); });
-document.getElementById('tabWindows').addEventListener('click', function(){ showCat('windows'); });
-function selectProduct(el, name, price) {
-  document.querySelectorAll('.product').forEach(function(p){ p.classList.remove('selected'); });
-  el.classList.add('selected');
-  var btn = document.getElementById('orderBtn');
-  btn.innerHTML = '💬 Order ' + name + ' - ' + price + '<span class="wa-num">WhatsApp: 076 618 7703</span>';
-  btn.href = 'https://wa.me/27766187703?text=' + encodeURIComponent("Hi JP's Tech-Solutions, I want to order " + name + ' - ' + price);
-}
-</script>
+            const chatEndRef = useRef(null);
 
-</body>
-</html>
+            useEffect(() => {
+                localStorage.setItem('jp_pilot_gold_sessions_v3', JSON.stringify(sessions));
+            }, [sessions]);
+
+            useEffect(() => {
+                chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            }, [sessions, loading]);
+
+            useEffect(() => {
+                let timer;
+                if (isTeamsRecording) {
+                    timer = setInterval(() => setRecordingDuration(prev => prev + 1), 1000);
+                } else {
+                    setRecordingDuration(0);
+                }
+                return () => clearInterval(timer);
+            }, [isTeamsRecording]);
+
+            const currentSession = sessions.find(s => s.id === activeSessionId) || sessions[0];
+            const currentPersona = PERSONAS.find(p => p.id === currentSession?.persona) || PERSONAS[0];
+
+            const createNewSession = (personaId = 'general') => {
+                const newId = Date.now().toString();
+                const persona = PERSONAS.find(p => p.id === personaId) || PERSONAS[0];
+                const newSession = {
+                    id: newId,
+                    title: `New ${persona.name} Chat`,
+                    persona: personaId,
+                    messages: [{ role: 'assistant', content: `Started new session in **${persona.name}** mode. What would you like to build, write, or analyze?` }],
+                    createdAt: Date.now()
+                };
+                setSessions([newSession, ...sessions]);
+                setActiveSessionId(newId);
+                if (personaId === 'image') setIsImageMode(true);
+            };
+
+            const deleteSession = (e, id) => {
+                e.stopPropagation();
+                if (sessions.length <= 1) return;
+                const filtered = sessions.filter(s => s.id !== id);
+                setSessions(filtered);
+                if (activeSessionId === id) setActiveSessionId(filtered[0].id);
+            };
+
+            // Read Aloud (TTS)
+            const handleReadAloud = (text) => {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const cleanText = text.replace(/###|\*\*|\[.*?\]/g, '');
+                    const utterance = new SpeechSynthesisUtterance(cleanText);
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    alert("Text-to-speech is not supported in your browser.");
+                }
+            };
+
+            // Email Function
+            const handleEmailSend = (title, content) => {
+                const subject = encodeURIComponent(`JP -Pilot Report: ${title}`);
+                const body = encodeURIComponent(content);
+                window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            };
+
+            // Quick Write Polish Actions
+            const handleWriteAction = (actionType) => {
+                if (!input.trim()) {
+                    setInput("Please write a professional project summary regarding Q3 deliverables.");
+                    return;
+                }
+                if (actionType === 'professional') {
+                    setInput(`Rewrite the following text to sound highly professional and executive: "${input}"`);
+                } else if (actionType === 'concise') {
+                    setInput(`Condense the following text into concise bullet points: "${input}"`);
+                } else if (actionType === 'email') {
+                    setInput(`Draft a formal business email based on: "${input}"`);
+                }
+            };
+
+            const handleSend = async (e) => {
+                e.preventDefault();
+                if (!input.trim() && !isTeamsRecording && loading) return;
+
+                const userText = input.trim();
+                setInput('');
+
+                const isImgReq = isImageMode || currentSession.persona === 'image' || /^(create|generate|draw|render|photo|image of)\b/i.test(userText);
+                const isTeamsReq = currentSession.persona === 'teams' || /teams|meeting|transcript|minutes/i.test(userText);
+
+                const updatedMessages = [...currentSession.messages, { role: 'user', content: userText || "Analyze Teams Meeting Recording & Transcript" }];
+                
+                setSessions(sessions.map(s => s.id === currentSession.id ? {
+                    ...s,
+                    messages: updatedMessages,
+                    title: s.messages.length === 1 ? (userText.slice(0, 30) || 'Teams Meeting') + '...' : s.title
+                } : s));
+
+                setLoading(true);
+
+                setTimeout(() => {
+                    let botReply = '';
+                    let imageUrl = null;
+
+                    if (isImgReq) {
+                        const styleObj = STYLES.find(st => st.id === selectedStyle) || STYLES[0];
+                        const ratioObj = ASPECT_RATIOS.find(ar => ar.id === aspectRatio) || ASPECT_RATIOS[0];
+                        let finalPrompt = userText;
+                        if (magicEnhance) {
+                            finalPrompt = `${userText}, ${styleObj.suffix}, 8k resolution, photorealistic masterpiece`;
+                        }
+                        const encoded = encodeURIComponent(finalPrompt);
+                        imageUrl = `https://image.pollinations.ai/prompt/${encoded}?width=${ratioObj.w}&height=${ratioObj.h}&seed=${Math.floor(Math.random() * 1000000)}&nologo=true`;
+                        botReply = `Here is your generated image for: **"${userText}"**\n*Style: ${styleObj.name} (${ratioObj.label})*`;
+                    } else if (isTeamsReq || currentSession.persona === 'teams') {
+                        botReply = `### 📞 Microsoft Teams Meeting Minutes & Action Items\n\n**Meeting Topic:** Q3 Executive Strategy & Roadmap\n**Duration Recorded:** 28 minutes\n**Participants:** 8 attendees\n\n#### 🔑 Executive Summary\nThe executive committee reviewed strategic milestones, approved the Q3 budget allocations, and confirmed the new cloud architecture timeline.\n\n#### 📋 Key Decisions\n1. **Cloud Migration**: Approved move to AWS production cluster by September 15.\n2. **Security Compliance**: Mandated multi-factor authentication across all internal tooling.\n\n#### ✅ Action Items\n- [ ] **Sarah**: Finalize AWS cost projection and submit to VP *(Due: Aug 22)*\n- [ ] **Marcus**: Deploy security patch v3.1 to staging *(Due: Aug 19)*\n- [ ] **Elena**: Schedule follow-up design sprint *(Due: Aug 25)*`;
+                    } else if (currentSession.persona === 'code') {
+                        botReply = `Here is the optimized code solution:\n\n\`\`\`javascript\n// JP -Pilot Gold Module\nfunction executeWorkflow() {\n    console.log("Running high-performance routine...");\n    return true;\n}\nexecuteWorkflow();\n\`\`\`\nLet me know if you need unit tests or refactoring!`;
+                    } else {
+                        botReply = `I have processed your request regarding **"${userText}"**. Here are the primary recommendations:\n\n1. **Strategic Alignment**: Ensure clear KPIs are established.\n2. **Execution**: Deploy automated monitoring to maintain velocity.\n3. **Review**: Audit deliverables weekly.`;
+                    }
+
+                    const finalMessages = [...updatedMessages, { role: 'assistant', content: botReply, image: imageUrl }];
+
+                    setSessions(sessions.map(s => s.id === currentSession.id ? {
+                        ...s,
+                        messages: finalMessages
+                    } : s));
+                    setLoading(false);
+                }, 1200);
+            };
+
+            const formatTime = (secs) => {
+                const m = Math.floor(secs / 60);
+                const s = secs % 60;
+                return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            };
+
+            const openCanvas = (title, content) => {
+                setCanvasTitle(title);
+                setCanvasContent(content);
+                setCanvasOpen(true);
+            };
+
+            const filteredSessions = sessions.filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()));
+
+            return (
+                <div className="flex h-full w-full bg-black overflow-hidden text-white">
+                    
+                    {/* SIDEBAR */}
+                    <aside className="w-72 bg-zinc-950 border-r border-zinc-800 flex flex-col justify-between shrink-0">
+                        <div className="p-4 flex flex-col h-full overflow-hidden">
+                            
+                            {/* App Header */}
+                            <div className="flex items-center justify-between mb-4 pb-3 border-b border-zinc-800">
+                                <div className="flex items-center space-x-2">
+                                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-bold text-black shadow-lg shadow-amber-500/20">JP</div>
+                                    <span className="font-bold text-lg tracking-tight text-white">JP -Pilot</span>
+                                </div>
+                                <span className="text-[10px] bg-amber-500/10 text-amber-400 font-semibold px-2 py-0.5 rounded-full border border-amber-500/30">
